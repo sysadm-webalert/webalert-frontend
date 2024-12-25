@@ -171,7 +171,7 @@
                   </div>
                   <div class="card-body">
                      <div class="web-image-container text-center mb-3 position-relative">
-                        <img :src="site.snapshotUrl" class="img-fluid rounded" style="cursor: pointer;" @click="openImage(site.snapshotUrl)" @error="setFallbackImage($event, site.snapshotUrl)"/>
+                        <img :src="site.snapshotUrl" class="img-fluid rounded" style="cursor: pointer;" @click="openImage(site.snapshotUrl)" @error="setFallbackImage($event, site.snapshotUrl)" alt="Site snapshot image"/>
                         <div v-if="loadingSnapshot[site.id]" class="overlay position-absolute w-100 h-100 d-flex justify-content-center align-items-center">
                            <output class="spinner-border text-primary">
                               <span class="visually-hidden">Loading...</span>
