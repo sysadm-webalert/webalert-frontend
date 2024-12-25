@@ -14,6 +14,7 @@ const register = async (registrationData) => {
         });
       return response.data;
   } catch (error) {
+      console.error('Error from axios:', error);
       throw error;
   }
 };
@@ -27,6 +28,7 @@ const invitation = async (registrationData) => {
       });
     return response.data;
 } catch (error) {
+    console.error('Error from axios:', error);
     throw error;
 }
 };
@@ -40,6 +42,7 @@ const requestPassword = async (email) => {
       });
     return response.data;
 } catch (error) {
+    console.error('Error from axios:', error);
     throw error;
 }
 };
@@ -53,6 +56,7 @@ const restartPassword = async (resetData) => {
       });
     return response.data;
 } catch (error) {
+    console.error('Error from axios:', error);
     throw error;
 }
 };
@@ -70,6 +74,7 @@ const login = async (email, password) => {
         });
         return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
 };
@@ -83,6 +88,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -96,6 +102,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -109,6 +116,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -122,6 +130,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -135,6 +144,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -150,6 +160,7 @@ const validateToken = async (token) => {
       const alertsArray = Object.values(response.data);
       return alertsArray;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -163,6 +174,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -175,6 +187,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+      console.error('Error from axios:', error);
       throw error;
     }
   };
@@ -188,6 +201,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -201,6 +215,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+      console.error('Error from axios:', error);
       throw error;
     }
   };
@@ -214,6 +229,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -227,6 +243,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -240,6 +257,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -253,6 +271,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -266,6 +285,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -279,6 +299,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+      console.error('Error from axios:', error);
       throw error;
     }
   };
@@ -292,7 +313,8 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
-        throw error;
+      console.error('Error from axios:', error);
+      throw error;
     }
   };
 
@@ -305,6 +327,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };
@@ -319,6 +342,7 @@ const validateToken = async (token) => {
       });
       return response.data;
     } catch (error) {
+        console.error('Error from axios:', error);
         throw error;
     }
   };

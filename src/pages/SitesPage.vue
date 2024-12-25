@@ -173,9 +173,9 @@
                      <div class="web-image-container text-center mb-3 position-relative">
                         <img :src="site.snapshotUrl" class="img-fluid rounded" style="cursor: pointer;" @click="openImage(site.snapshotUrl)" @error="setFallbackImage($event, site.snapshotUrl)"/>
                         <div v-if="loadingSnapshot[site.id]" class="overlay position-absolute w-100 h-100 d-flex justify-content-center align-items-center">
-                           <div class="spinner-border text-primary" role="status">
+                           <output class="spinner-border text-primary">
                               <span class="visually-hidden">Loading...</span>
-                           </div>
+                           </output>
                         </div>
                         <i class="bi bi-camera" style="cursor: pointer; font-size: 1.5rem; transform: translate(-10%, -10%);" @click.stop="captureScreenshot(site)" ></i>
                      </div>

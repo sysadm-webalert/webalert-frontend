@@ -269,9 +269,9 @@
                </div>
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
-                  <div class="spinner-border text-primary" role="status">
+                  <output class="spinner-border text-primary">
                      <span class="visually-hidden">Loading...</span>
-                  </div>
+                  </output>
                </div>
             </div>
          </div>
@@ -314,9 +314,9 @@
                </div>
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
-                  <div class="spinner-border text-primary" role="status">
+                  <output class="spinner-border text-primary">
                      <span class="visually-hidden">Loading...</span>
-                  </div>
+                  </output>
                </div>
             </div>
          </div>
@@ -345,9 +345,9 @@
                </div>
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
-                  <div class="spinner-border text-primary" role="status">
+                  <output class="spinner-border text-primary">
                      <span class="visually-hidden">Loading...</span>
-                  </div>
+                  </output>
                </div>
             </div>
          </div>
@@ -376,9 +376,9 @@
                </div>
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
-                  <div class="spinner-border text-primary" role="status">
+                  <output class="spinner-border text-primary">
                      <span class="visually-hidden">Loading...</span>
-                  </div>
+                  </output>
                </div>
             </div>
          </div>
@@ -435,4 +435,3 @@
       </div>
    </div>
 </template>
-<style scoped></style>

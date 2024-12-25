@@ -1,4 +1,4 @@
-import { createRouter, createMemoryHistory, createWebHistory  } from 'vue-router';
+import { createRouter, createWebHistory  } from 'vue-router';
 import RegisterPage from '../pages/auth/RegisterPage.vue';
 import LoginPage from '../pages/auth/LoginPage.vue';
 import InvitationPage from '../pages/auth/InvitationPage.vue';

@@ -2,7 +2,6 @@
    import { useRoute } from 'vue-router';
    import { ref } from 'vue';
    import { invitation } from '../../api/api';
-   import { useRouter } from 'vue-router';
    import DarkSection from '../../components/common/DarkSection.vue';
    import sweetalert from '../../composables/sweetalert';
    import '../../assets/auth.css';

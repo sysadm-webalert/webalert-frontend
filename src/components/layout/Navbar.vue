@@ -12,7 +12,7 @@
 </script>
 <template>
    <!-- Navbar Desktop-->
-   <nav v-if="session.logged" class="navbar navbar-desktop navbar-expand-lg navbar-light bg-light">
+   <nav v-if="session.logged" class="navbar navbar-desktop navbar-expand-lg navbar-light bg-light" aria-label="Desktop navigation bar">
       <div class="container-fluid">
          <a class="navbar-brand" href="#">Client Dashboard</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@
       </div>
    </nav>
    <!-- Navbar Mobile-->
-   <nav v-if="session.logged" class="navbar navbar-mobile navbar-expand-lg navbar-light bg-light">
+   <nav v-if="session.logged" class="navbar navbar-mobile navbar-expand-lg navbar-light bg-light" aria-label="Mobile navigation bar">
       <div class="container-fluid">
          <a class="navbar-brand" href="#">Client Dashboard</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -12,7 +12,6 @@ const closeModal = () => {
          <slot name="header">
          </slot>
          <button class="close-modal-btn" @click="closeModal">
-         <img src="../assets/images/close-button.svg">
          </button>
       </div>
       <div class="modal__body">
@@ -21,6 +20,3 @@ const closeModal = () => {
    </div>
 </div>
 </template>
-    
-<style scoped>
-</style>
