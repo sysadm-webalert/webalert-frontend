@@ -1,0 +1,34 @@
+services:
+  webalert-frontend-dev:
+    container_name: webalert-frontend-dev
+    image: webalert:frontend-dev
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        VITE_VUE_APP_API_BASE_URL: "http://localhost:8000/api/"
+    ports:
+      - "80:80"
+    networks:
+      - webalert-network
+    profiles: [ dev ]
+
+  webalert-frontend-prod:
+    container_name: webalert-frontend-prod
+    image: webalert:frontend-prod
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        VITE_VUE_APP_API_BASE_URL: "https://api.webalert.digital/api/"
+    networks:
+      - webalert-network
+    ports:
+      - "8086:80"
+    profiles: [ prod ]
+    
+
+networks:
+  webalert-network:
+    name: webalert-network
+    external: true
