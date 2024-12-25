@@ -29,7 +29,7 @@
    
    function generateColorPalette(count) {
      for (let i = 0; i < count; i++) {
-       let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+       let color = '#' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16).slice(0, 6);
        while (color.length < 7) {
          color += '0';
        }
