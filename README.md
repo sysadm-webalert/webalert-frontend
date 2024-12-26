@@ -1,4 +1,4 @@
-# WebAlert Agent
+# WebAlert Frontend
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sysadm-webalert_webalert-frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sysadm-webalert_webalert-frontend)
 ## Overview
 WebAlert is a smoothie app to monitoring your sites, with real-time alerts and detailed metrics, you'll always stay informed about the status of your sites. 
