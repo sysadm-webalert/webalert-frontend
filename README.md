@@ -33,9 +33,12 @@ WebAlert is a smoothie app to monitoring your sites, with real-time alerts and d
     ```
 
 ## Configuration
-1. Set your API address backend as env variable.
+1. During the build of the image, you must set the following argument
+    ```sh
+    docker build --build-arg VITE_VUE_APP_API_BASE_URL=https://api.webalert.digital/api/ -f docker/Dockerfile -t build/webalert-frontend:latest .
+    ```
      ```sh
-    VITE_VUE_APP_API_BASE_URL
+    VITE_VUE_APP_API_BASE_URL: "https://api.webalert.digital/api/"
     ```
 
 ## Contributing

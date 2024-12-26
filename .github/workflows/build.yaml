@@ -21,7 +21,7 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        docker build -f docker/Dockerfile -t build/webalert-frontend:${{  github.ref_name }} .
+        docker build --build-arg VITE_VUE_APP_API_BASE_URL=https://api.webalert.digital/api/ -f docker/Dockerfile -t build/webalert-frontend:${{  github.ref_name }} .
 
     - name: Tag the images
       run: |

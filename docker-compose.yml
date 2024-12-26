@@ -11,22 +11,7 @@ services:
       - "80:80"
     networks:
       - webalert-network
-    profiles: [ dev ]
-
-  webalert-frontend-prod:
-    container_name: webalert-frontend-prod
-    image: webalert:frontend-prod
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-      args:
-        VITE_VUE_APP_API_BASE_URL: "https://api.webalert.digital/api/"
-    networks:
-      - webalert-network
-    ports:
-      - "8086:80"
-    profiles: [ prod ]
-    
+    profiles: [ dev ]   
 
 networks:
   webalert-network:
