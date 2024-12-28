@@ -165,19 +165,6 @@ const validateToken = async (token) => {
     }
   };
 
-  const getStatus = async (token) => {
-    try {
-      const response = await axiosInstance.get('v1/status/getbyclient', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      return response.data;
-    } catch (error) {
-        console.error('Error from axios:', error);
-        throw error;
-    }
-  };
   const getStatusBySite = async (token, siteId, filter = '7d') => {
     try {
       const response = await axiosInstance.get(`/v1/status/getbyhost/${siteId}?filter=${filter}`, {
@@ -349,4 +336,4 @@ const validateToken = async (token) => {
 
   
 
-export { axiosInstance, register, invitation, requestPassword, restartPassword, login, validateToken, getSites, postSites, putSites, deleteSites, getAllAlerts, getStatus, getStatusBySite, getStatusByMultipleHosts, getMetricsBySite, getMetricsByMultipleHosts, getProfile, setProfile, inviteMember, getMembers, changeMember, removeMember, createSnapshot, getEvents };
+export { axiosInstance, register, invitation, requestPassword, restartPassword, login, validateToken, getSites, postSites, putSites, deleteSites, getAllAlerts, getStatusBySite, getStatusByMultipleHosts, getMetricsBySite, getMetricsByMultipleHosts, getProfile, setProfile, inviteMember, getMembers, changeMember, removeMember, createSnapshot, getEvents };
