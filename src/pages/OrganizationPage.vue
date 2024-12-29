@@ -118,7 +118,7 @@
                :key="member.id"
                class="col-md-6 col-lg-4 mb-4"
                >
-               <div class="card shadow-sm">
+               <div class="card panel shadow-sm">
                   <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                      <h6 class="mb-0">
                         Status:

@@ -50,7 +50,7 @@
       <div class="row">
          <!-- Site card -->
          <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card panel">
                <div class="card-body text-center">
                   <span class="text-primary" style="font-size: 3rem;"><i class="bi bi-globe"></i></span>
                   <h5 class="card-title">Sites</h5>
@@ -61,7 +61,7 @@
          </div>
          <!-- Alert card -->
          <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card panel">
                <div class="card-body text-center">
                   <span class="text-danger" style="font-size: 3rem;"><i class="bi-exclamation-triangle-fill"></i></span>
                   <h5 class="card-title">Active Alerts</h5>
@@ -72,7 +72,7 @@
          </div>
          <!-- Event cards -->
          <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card panel">
                <div class="card-body text-center">
                   <span class="text-primary" style="font-size: 3rem;"><i class="bi bi-bell"></i></span>
                   <h5 class="card-title">Events</h5>
@@ -85,7 +85,7 @@
    </div>
    <div class="row justify-content-center">
       <div class="col-12 col-md-10 mb-4">
-         <div class="card shadow-sm">
+         <div class="card panel shadow-sm">
             <div class="card-header bg-primary text-white">
                <h5 class="mb-0">Last alerts in 24 hours <i class="bi-exclamation-triangle-fill"></i></h5>
             </div>
