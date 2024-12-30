@@ -1,5 +1,5 @@
 <script setup>
-   import { ref, onMounted, computed } from 'vue';
+   import { ref, onMounted, computed, onUnmounted } from 'vue';
    import { getSites, getAllAlerts, getEvents } from '../api/api';
    import { useSession } from '../stores/user';
    import sweetalert from '../composables/sweetalert';
@@ -9,25 +9,7 @@
    const alerts = ref([]);
    const events = ref([]);
    const { successAlert } = sweetalert();
-   
-   onMounted(async () => {
-     if (!session.isLogged) {
-       return; 
-     }
-     try {
-       sites.value = await getSites(session.getToken);
-       alerts.value = await getAllAlerts(session.getToken);
-       events.value = await getEvents(session.getToken);
-   
-       if (session.showWelcomeAlert) {
-         successAlert("Welcome, " + session.getName);
-         session.hideAlert();
-       }
-     } catch (error) {
-       console.error('Error fetching data:', error);
-     } 
-   });
-   
+      
    const activeAlerts = computed(() => {
      return Object.values(alerts.value).filter(alert => !alert.isResolved).length;
    });
@@ -41,6 +23,25 @@
      return Object.values(alerts.value).filter(alert => {
        const createdAt = new Date(alert.createdAt);
        return createdAt >= lastTwentyHours;
+     });
+   });
+   const loadData = async () => {
+   if (!session.isLogged) {
+      return; 
+   }
+   try {
+      sites.value = await getSites(session.getToken);
+      alerts.value = await getAllAlerts(session.getToken);
+      events.value = await getEvents(session.getToken);
+   } catch (error) {
+      console.error('Error fetching data:', error);
+   }
+   };
+   onMounted(() => {
+      loadData();
+     const interval = setInterval(loadData, 300000);
+     onUnmounted(() => {
+       clearInterval(interval);
      });
    });
 </script>

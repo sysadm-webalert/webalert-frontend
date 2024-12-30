@@ -184,7 +184,7 @@
    }
    
    // Getting all sites
-   async function loadHosts() {
+   async function loadData() {
      if (!session.isLogged) {
        return; 
      }
@@ -349,8 +349,8 @@
    }
    
    onMounted(() => {
-     loadHosts();
-     const interval = setInterval(loadHosts, 300000);
+      loadData();
+     const interval = setInterval(loadData, 300000);
      onUnmounted(() => {
        clearInterval(interval);
      });

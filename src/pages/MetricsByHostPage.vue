@@ -1,5 +1,5 @@
 <script setup>
-   import { ref, onMounted } from 'vue';
+   import { ref, onMounted, onUnmounted } from 'vue';
    import { useRoute } from 'vue-router';
    import { useSession } from '../stores/user';
    import { GChart } from 'vue-google-charts';
@@ -193,7 +193,7 @@
      ]);
    }
    
-   // This functions add 10% of the Y axis of the graphic
+   // This functions add 20% of the Y axis of the graphic
    // in order to more human friendly redeable
    function calculateMaxValue(data) {
      if (data.length <= 1) return 100;
@@ -233,7 +233,13 @@
      }
    }
    
-   onMounted(loadData);
+   onMounted(() => {
+      loadData();
+     const interval = setInterval(loadData, 300000);
+     onUnmounted(() => {
+       clearInterval(interval);
+     });
+   });
 </script>
 <template>
    <div class="container mt-4">
@@ -270,7 +276,7 @@
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
                   <output class="spinner-border text-primary">
-                     <span class="visually-hidden">Loading...</span>
+                  <span class="visually-hidden">Loading...</span>
                   </output>
                </div>
             </div>
@@ -315,7 +321,7 @@
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
                   <output class="spinner-border text-primary">
-                     <span class="visually-hidden">Loading...</span>
+                  <span class="visually-hidden">Loading...</span>
                   </output>
                </div>
             </div>
@@ -346,7 +352,7 @@
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
                   <output class="spinner-border text-primary">
-                     <span class="visually-hidden">Loading...</span>
+                  <span class="visually-hidden">Loading...</span>
                   </output>
                </div>
             </div>
@@ -377,7 +383,7 @@
                <div class="card-body text-center">
                   <!-- Spinner de Bootstrap -->
                   <output class="spinner-border text-primary">
-                     <span class="visually-hidden">Loading...</span>
+                  <span class="visually-hidden">Loading...</span>
                   </output>
                </div>
             </div>
