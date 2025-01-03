@@ -33,6 +33,10 @@
       sites.value = await getSites(session.getToken);
       alerts.value = await getAllAlerts(session.getToken);
       events.value = await getEvents(session.getToken);
+      if (session.showWelcomeAlert) {
+         successAlert("Welcome, " + session.getName);
+         session.hideAlert();
+      }
    } catch (error) {
       console.error('Error fetching data:', error);
    }
