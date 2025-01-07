@@ -1,5 +1,5 @@
 <script setup>
-   import { useRoute } from 'vue-router';
+   import { useRoute, useRouter } from 'vue-router';
    import { ref } from 'vue';
    import { invitation } from '../../api/api';
    import DarkSection from '../../components/common/DarkSection.vue';
