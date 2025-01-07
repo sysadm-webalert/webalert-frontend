@@ -8,6 +8,7 @@
    
    const route = useRoute();
    const router = useRouter();
+   const name = ref('');
    const password = ref('');
    const { successAlert } = sweetalert();
    const { errorAlert } = sweetalert();
