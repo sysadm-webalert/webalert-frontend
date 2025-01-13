@@ -3,6 +3,7 @@
    import { getAllAlerts } from '../api/api';
    import { useSession } from '../stores/user';
    import Multiselect from 'vue-multiselect';
+   import {Tooltip} from "bootstrap"
    
    const session = useSession();
    const alerts = ref([]);
@@ -11,6 +12,10 @@
    const filterTypes = ref([]);
    const resolvedFilter = ref([]);
    
+   const vCustomTooltip = {
+     mounted: (el) => new Tooltip(el)
+   }
+
    onMounted(async () => {
      if (!session.isLogged) {
        return; 
@@ -72,6 +77,11 @@
       </div>
    </div>
    <div class="container mt-5">
+      <div class="d-flex align-items-center">
+         <h3 class="mb-0">Organization alerts</h3>
+         <small class="text-muted ms-2">Last 100</small>
+         <i v-custom-tooltip title="Alerts are visible to all organizational members." data-bs-placement="right" class="bi bi-info-square-fill ms-2"></i>
+      </div>
       <div class="table-responsive">
          <table class="table table-borderless table-hover">
             <thead class="table-primary">
