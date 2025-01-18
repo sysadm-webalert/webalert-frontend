@@ -11,32 +11,36 @@
    const detailedAlert = ref({});
    const filterTypes = ref([]);
    const resolvedFilter = ref([]);
-   
+   const selectedWebsites = ref([]);
+   const websiteOptions = ref([]);
+
    const vCustomTooltip = {
      mounted: (el) => new Tooltip(el)
    }
 
    onMounted(async () => {
-     if (!session.isLogged) {
-       return; 
-     }
-     try {
-       alerts.value = await getAllAlerts(session.getToken);
-       console.log(alerts.value)
-       filterTypes.value = [...new Set(alerts.value.map(alert => alert.type))]
+   if (!session.isLogged) {
+      return; 
+   }
+   try {
+      alerts.value = await getAllAlerts(session.getToken);
+      filterTypes.value = [...new Set(alerts.value.map(alert => alert.type))]
          .map(type => ({ label: type, value: type }));
-   
-     } catch (error) {
-       console.error('Error fetching data:', error);
-     }
+      websiteOptions.value = [...new Set(alerts.value.map(alert => alert.website))]
+         .map(website => ({ label: website, value: website }));
+
+   } catch (error) {
+      console.error('Error fetching data:', error);
+   }
    });
-   
+
    const filteredAlerts = computed(() => {
-     return alerts.value.filter(alert => {
-       const matchesType = selectedAlert.value.length === 0 || selectedAlert.value.map(item => item.value).includes(alert.type);
-       const matchesResolved = resolvedFilter.value.length === 0 || resolvedFilter.value.some(item => item.value === alert.isResolved);
-       return matchesType && matchesResolved;
-     });
+   return alerts.value.filter(alert => {
+      const matchesType = selectedAlert.value.length === 0 || selectedAlert.value.map(item => item.value).includes(alert.type);
+      const matchesResolved = resolvedFilter.value.length === 0 || resolvedFilter.value.some(item => item.value === alert.isResolved);
+      const matchesWebsite = selectedWebsites.value.length === 0 || selectedWebsites.value.map(item => item.value).includes(alert.website);
+      return matchesType && matchesResolved && matchesWebsite;
+   });
    });
    
    
@@ -69,6 +73,19 @@
                label="label"
                track-by="value"
                placeholder="Select resolution status"
+               :multiple="true"
+               :close-on-select="false"
+               :clear-on-select="false"
+               />
+         </div>
+         <div class="col-md-4">
+            <h5>Website:</h5>
+            <Multiselect
+               v-model="selectedWebsites"
+               :options="websiteOptions"
+               label="label"
+               track-by="value"
+               placeholder="Select one or more websites"
                :multiple="true"
                :close-on-select="false"
                :clear-on-select="false"
