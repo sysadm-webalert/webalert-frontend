@@ -141,6 +141,7 @@ const validateToken = async (token) => {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
+        timeout: 50000,
       });
       return response.data;
     } catch (error) {
