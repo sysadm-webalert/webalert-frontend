@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/api/',
-  timeout: 10000,
+  timeout: 50000,
 });
 
 const register = async (registrationData) => {
@@ -141,7 +141,6 @@ const validateToken = async (token) => {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
-        timeout: 50000,
       });
       return response.data;
     } catch (error) {
