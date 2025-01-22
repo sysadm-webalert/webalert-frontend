@@ -5,6 +5,7 @@
    import SitesForm from '../components/forms/SitesForm.vue';
    import { useRouter } from 'vue-router';
    import sweetalert from '../composables/sweetalert';
+   import { DateTime } from 'luxon';
    
    const session = useSession();
    const router = useRouter();
@@ -17,6 +18,7 @@
    const { errorAlert } = sweetalert();
    const { cooldownAlert } = sweetalert();
    const { confirmAlert } = sweetalert();
+   const userTimezone = localStorage.getItem("timezone");
    
    onMounted(async () => {
      if (!session.isLogged) {
@@ -27,31 +29,26 @@
    });
    
    // lastCheckAt time ago calculation
-   const timeAgo = (date) => {
-     const now = new Date();
-     const seconds = Math.floor((now - new Date(date)) / 1000);
-     
-     let interval = Math.floor(seconds / 31536000);
-     if (interval > 1) return `${interval} years ago`;
-     
-     interval = Math.floor(seconds / 2592000);
-     if (interval > 1) return `${interval} months ago`;
-     
-     interval = Math.floor(seconds / 86400);
-     if (interval > 1) return `${interval} days ago`;
-     
-     interval = Math.floor(seconds / 3600);
-     if (interval === 1) return '1 hour ago';
-     if (interval > 1) {
-       const minutes = Math.floor((seconds % 3600) / 60);
-       return `${interval} hours${minutes > 0 ? ' and ' + minutes + ' minutes' : ''} ago`;
-     }
-   
-     interval = Math.floor(seconds / 60);
-     if (interval === 1) return '1 minute ago';
-     return `${interval} minutes ago`;
+   const timeAgo = (date, timezone) => {
+   const userTime = DateTime.fromFormat(date, 'yyyy-MM-dd HH:mm:ss', { zone: timezone });
+
+   const now = DateTime.now().setZone(timezone);
+
+   const diffInSeconds = Math.floor(now.diff(userTime).as('seconds'));
+
+   const diff = now.diff(userTime, ['years', 'months', 'days', 'hours', 'minutes']).toObject();
+
+   if (diff.years >= 1) return `${Math.floor(diff.years)} years ago`;
+   if (diff.months >= 1) return `${Math.floor(diff.months)} months ago`;
+   if (diff.days >= 1) return `${Math.floor(diff.days)} days ago`;
+   if (diff.hours >= 1) {
+      const minutes = Math.floor(diff.minutes % 60);
+      return `${Math.floor(diff.hours)} hours${minutes > 0 ? ` and ${minutes} minutes` : ''} ago`;
+   }
+   if (diff.minutes >= 1) return `${Math.floor(diff.minutes)} minutes ago`;
+   return `0 minutes ago`;
    };
-   
+      
    const openModal = () => {
      editSite.value = null;
    };
@@ -192,7 +189,7 @@
                            :disabled="!site.agent">
                         {{ site.agent && site.agent.isInstalled ? `Agent: v${site.agent.version}` : 'Agent not installed' }}
                         </button>
-                        <small v-if="site.agent && site.agent.isInstalled">Last check: {{ timeAgo(site.agent.lastCheckedAt) }}</small>
+                        <small v-if="site.agent && site.agent.isInstalled">Last check: {{ timeAgo(site.agent.lastCheckedAt, userTimezone) }}</small>
                         <button v-else type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#downloadModal">Download Agent</button>
                      </div>
                   </div>

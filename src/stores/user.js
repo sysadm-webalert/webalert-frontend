@@ -5,6 +5,7 @@ export const useSession = defineStore('session', {
     name: localStorage.getItem("name") || '',
     token: localStorage.getItem("token") || '',
     email: localStorage.getItem("email") || '',
+    timezone: localStorage.getItem("timezone") || '',
     logged: false,
     showWelcomeAlert: false,
     snapshotCooldown: JSON.parse(localStorage.getItem('snapshotCooldown')) || {}
@@ -19,6 +20,7 @@ export const useSession = defineStore('session', {
       localStorage.setItem('name', userData.name);
       localStorage.setItem('token', userData.token);
       localStorage.setItem('email', userData.email);
+      localStorage.setItem('timezone', userData.timezone);
       localStorage.removeItem('screenshotCooldown');
     },
     logout() {

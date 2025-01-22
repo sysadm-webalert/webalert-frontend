@@ -8,7 +8,7 @@
    const { errorAlert } = sweetalert();
    const { successAlert } = sweetalert();
    const profileData = ref({
-     timezone: 'UTC - Coordinated Universal Time',
+     timezone: session.timezone || 'UTC',
      notification_email: 'No email notification',
    });
    
@@ -53,7 +53,6 @@
      { label: 'America/Santiago - Chile Standard Time', value: 'America/Santiago', offset: '-04:00' },
      { label: 'America/Asuncion - Paraguay Time', value: 'America/Asuncion', offset: '-04:00' },
      { label: 'America/Manaus - Amazon Time', value: 'America/Manaus', offset: '-04:00' },
-     { label: 'America/Godthab - Western Greenland Time', value: 'America/Godthab', offset: '-03:00' },
      { label: 'America/Noronha - Fernando de Noronha Time', value: 'America/Noronha', offset: '-02:00' },
      { label: 'Africa/Algiers - Central European Time (Africa)', value: 'Africa/Algiers', offset: '+01:00' },
      { label: 'Africa/Cairo - Eastern European Time (Africa)', value: 'Africa/Cairo', offset: '+02:00' },
@@ -84,6 +83,8 @@
    const saveProfile = async () => {
      try {
        const response = await setProfile(session.getToken, profileData.value);
+       session.timezone = profileData.value.timezone;
+       localStorage.setItem('timezone', session.timezone);
        successAlert(response.message);
      } catch (error) {
        errorAlert(error.message);
